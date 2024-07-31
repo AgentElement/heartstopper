@@ -1,0 +1,73 @@
+# `U` is a predefined unit of measure that means 19.05mm, which is MX spacing
+points:
+  mirror: -35
+  zones:
+    matrix:
+      columns:
+        inner.key.stagger:
+        index.key.stagger: 2
+        middle.key.stagger: 9
+        ring.key.stagger: -8
+        pinky.key:
+          stagger: -10
+          splay: -6
+          top.shift: [0, 5]
+      rows:
+        bottom:
+        home:
+        top:
+    thumbfan:
+      anchor:
+        ref: matrix_index_home
+        shift: [-40, -64]
+        rotate: 38
+      columns:
+        outer.key:
+          height: 1u
+        home.key:
+          height: 1u
+          splay: -6
+          origin: [-0.5u, -0.5u]
+          shift: [0, 4]
+        inner.key:
+          height: 1u
+          splay: -6
+          origin: [-0.5u, -0.5u]
+      rows:
+        thumb:
+  rotate: 0
+
+pcbs:
+  simple_split:
+    footprints:
+      keys:
+        what: mx
+        where: true
+        params:
+          from: GND
+          to: "{{name}}"
+          reverse: true
+          keycaps: true
+      mcu:
+        what: promicro
+        where:
+          - ref: matrix_inner_home
+            shift: [1U, 0.5U]
+            rotate: -90
+        params:
+          P7: matrix_pinky_top
+          P18: matrix_ring_top
+          P19: matrix_middle_top
+          P20: matrix_index_top
+          P21: matrix_inner_top
+          P15: matrix_pinky_home
+          P14: matrix_ring_home
+          P16: matrix_middle_home
+          P10: matrix_index_home
+          P1: matrix_inner_home
+          P2: matrix_pinky_bottom
+          P3: matrix_ring_bottom
+          P4: matrix_middle_bottom
+          P5: matrix_index_bottom
+          P6: matrix_inner_bottom
+          P8: thumb_cluster
