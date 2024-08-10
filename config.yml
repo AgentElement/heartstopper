@@ -1,6 +1,5 @@
 # `U` is a predefined unit of measure that means 19.05mm, which is MX spacing
 points:
-  mirror: -35
   zones:
     matrix:
       columns:
@@ -10,8 +9,7 @@ points:
         ring.key.stagger: -8
         pinky.key:
           stagger: -10
-          splay: -6
-          top.shift: [0, 5]
+          splay: -8
       rows:
         bottom:
         home:
@@ -19,7 +17,7 @@ points:
     thumbfan:
       anchor:
         ref: matrix_index_home
-        shift: [-40, -64]
+        shift: [-40, -65]
         rotate: 38
       columns:
         outer.key:
