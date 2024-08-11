@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "ergogen": "^4.1.0",
+    "dxf": "^5.1.0",
+    "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "build": "ergogen ./ergogen/ --output ./build/ergogen/",
+    "debug": "ergogen ./ergogen/ --output ./ergogen/output --clear --debug",
+    "clear": "rm -rfv ./ergogen/build/*",
+    "watch:build": "nodemon -e yaml -x \"npm run build\"",
+    "watch:debug": "nodemon -e yaml -x \"npm run debug\""
+    
+  },
+  "nodemonConfig": {
+    "ignore": ["./ergogen/output"],
+    "delay": 0,
+    "events": {
+      "start": "clear -x"
+    }
+  }
+}
