@@ -1,7 +1,7 @@
 MX_HOLE_SIZE = 14.5;
 MX_PLATE_THICKNESS = 1.5;
 
-use <points.scad>
+include <points.scad>
 
 module plate_holes(h) {
     for (i = points) {
@@ -26,11 +26,3 @@ module plate() {
 }
 
 plate();
-
-// linear_extrude(height=10, center=true)
-// import("kb.dxf");
-
-// linear_extrude(height=1, center=true)
-// minkowski(1,)
-// hull()
-// import("kb.dxf");
