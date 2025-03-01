@@ -1,14 +1,19 @@
 # `U` is a predefined unit of measure that means 19.05mm, which is MX spacing
+units:
+  sp: 14.5 # Padded switch plate size
+
 points:
   zones:
     matrix:
+      anchor:
+        shift: [00, 00]
       columns:
         inner.key.stagger:
         index.key.stagger: 2
         middle.key.stagger: 9
-        ring.key.stagger: -8
+        ring.key.stagger: -9
         pinky.key:
-          stagger: -10
+          stagger: -9
           splay: -8
       rows:
         bottom:
@@ -17,7 +22,7 @@ points:
     thumbfan:
       anchor:
         ref: matrix_index_home
-        shift: [-40, -65]
+        shift: [-42, -64]
         rotate: 38
       columns:
         outer.key:
@@ -35,37 +40,61 @@ points:
         thumb:
   rotate: 0
 
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [1u, 1u]
+  keys:
+    - what: rectangle
+      where: true
+      size: [1u, 1u]
+  board:
+    - what: polygon
+      fillet: 4
+      operation: stack
+      points:
+        - ref: matrix_inner_top
+          shift: [-0.5sp, 0.5sp]
+        - ref: thumbfan_outer_thumb
+          shift: [-0.5sp, 0.5sp]
+        - ref: thumbfan_outer_thumb
+          shift: [-0.5sp, -0.5sp]
+        - ref: matrix_pinky_bottom
+          shift: [0.5sp, -0.5sp]
+        - ref: matrix_pinky_top
+          shift: [0.5sp, 0.5sp]
+        - ref: matrix_middle_top
+          shift: [0.5sp, 0.5sp]
+        - ref: matrix_middle_top
+          shift: [-0.5sp, 0.5sp]
+
+
 pcbs:
-  simple_split:
+  heartstopper:
     footprints:
+      diodes:
+        what: diode
+        where: true
+        params:
+          from: "{{clique_src}}"
+          to: "{{switch}}"
+
       keys:
         what: mx
         where: true
         params:
-          from: GND
-          to: "{{name}}"
+          from: "{{switch}}"
+          to: "{{clique_dst}}"
           reverse: true
           keycaps: true
+          hotswap: true
+
       mcu:
         what: promicro
         where:
           - ref: matrix_inner_home
-            shift: [1U, 0.5U]
+            shift: [-1U, 0]
             rotate: -90
         params:
-          P7: matrix_pinky_top
-          P18: matrix_ring_top
-          P19: matrix_middle_top
-          P20: matrix_index_top
-          P21: matrix_inner_top
-          P15: matrix_pinky_home
-          P14: matrix_ring_home
-          P16: matrix_middle_home
-          P10: matrix_index_home
-          P1: matrix_inner_home
-          P2: matrix_pinky_bottom
-          P3: matrix_ring_bottom
-          P4: matrix_middle_bottom
-          P5: matrix_index_bottom
-          P6: matrix_inner_bottom
-          P8: thumb_cluster
+          reverse: true
