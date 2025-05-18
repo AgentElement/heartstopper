@@ -62,3 +62,40 @@ module screw_holes(h) {
         children();
     }
 }
+
+module strut_positions(h) {
+    key_delta = MX_KEY_SIZE / 2 + KEYDIFF + M3_HOLE_DIAM / 2;
+    linear_extrude(h) {
+        translate([-1,3,0])
+        translate([
+            points[5][1] + MX_KEY_SIZE / 2 - KEYDIFF - M3_HOLE_DIAM / 2,
+            points[5][2] + key_delta,
+        ])
+        children();
+
+        translate([1,2.5,0])
+        translate([
+            points[11][1] - MX_KEY_SIZE / 2 + KEYDIFF + M3_HOLE_DIAM / 2, 
+            points[11][2] + key_delta,
+        ])
+        children();
+
+        translate([-0.5, 1.5, 0])
+        translate([M3_HOLE_DIAM / 2 * sqrt(2), -M3_HOLE_DIAM / 2 * sqrt(2), 0])
+
+        translate([1,2,0])
+        hole_with_delta(14, -1, 1)
+        children();
+        // hole_with_delta(11, 1, 0);
+        translate([-2.5, 2.5, 0])
+        hole_with_delta(2, -1, 0)
+        children();
+        // translate([M3_HOLE_DIAM / 2 * sqrt(2), M3_HOLE_DIAM / 2 * sqrt(2), 0])
+
+        p1 = get_offset(points[12], 1, -1);
+        p2 = get_offset(points[15], -1, -1);
+        translate([1.5, -2.5, 0])
+        place_equidistant_along_line(p1, p2, 5, ends=false)
+        children();
+    }
+}

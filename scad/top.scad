@@ -13,6 +13,14 @@ module plate_holes() {
     }
 }
 
+module plate_struts() {
+    screw_holes(h=5, $fn=64)
+    difference() {
+        circle(r=M3_HOLE_DIAM-0.5);
+        circle(r=M3_HOLE_DIAM/2);
+    }
+}
+
 
 kbx = -KB2040_W - MX_KEY_SIZE / 2 - KEYDIFF;
 kby = -KB2040_H / 2 + MX_KEY_SIZE / 2;
@@ -66,6 +74,7 @@ module plate() {
         translate([0, 0, -5])
         holes(10, $fn=64);
     }
+    plate_struts();
 }
 
 module sketch_pcb() {
@@ -84,15 +93,5 @@ module boundary() {
     }
 }
 
-// difference() {
-//    dxf2();
-//    plate_holes();
-// }
-
 plate();
-sketch_pcb();
-boundary();
 
-
-//projection()
-//outline();
