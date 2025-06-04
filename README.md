@@ -27,9 +27,13 @@ The name of this keyboard comes from the shape of the top plate: It looks like
 half a heart! And it's heartstoppingly gorgeous!
 
 ---
+![Heartstopper assembled](https://github.com/AgentElement/heartstopper/blob/master/img/assembled.jpg)
 
-![Prototype with top plate only](https://github.com/agentelement/heartstopper/blob/master/img/proto.jpg)
-![Top plate with and without switches](https://github.com/agentelement/heartstopper/blob/master/img/top_plate.jpg)
+![Heartstopper pcb](https://github.com/AgentElement/heartstopper/blob/master/img/pcb.jpg)
+
+![Heartstopper schematic](https://github.com/AgentElement/heartstopper/blob/master/img/schematic.png)
+
+![Heartstopper reverse left](https://github.com/AgentElement/heartstopper/blob/master/img/board.png)
 
 ---
 
